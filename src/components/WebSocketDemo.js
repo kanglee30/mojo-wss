@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import useWebSocket, { ReadyState } from "react-use-websocket";
 import { API_KEY, CRYPTO_KEYS, FOREX_KEYS } from "../constants";
 
-export const WebSocketDemo = ({ type = "crypto" }) => {
+export const WebSocketDemo = () => {
   const [cryptoBoolean, setCryptoBoolean] = useState(true);
   const [isFetching, setIsFetching] = useState(false);
   const [currPriceA, setCurrPriceA] = useState([]);
@@ -141,19 +141,9 @@ export const WebSocketDemo = ({ type = "crypto" }) => {
         return updatedMessages;
       });
     }
-
-    console.log("lastJsonMessage", lastJsonMessage);
   }, [lastJsonMessage, cryptoBoolean]);
 
-  // const connectionStatus = {
-  //   [ReadyState.CONNECTING]: "Connecting",
-  //   [ReadyState.OPEN]: "Open",
-  //   [ReadyState.CLOSING]: "Closing",
-  //   [ReadyState.CLOSED]: "Closed",
-  //   [ReadyState.UNINSTANTIATED]: "Uninstantiated",
-  // }[readyState];
-
-  const handleSwitchClick = (type) => {
+  const handleSwitchClick = () => {
     setCryptoBoolean(!cryptoBoolean);
     setCurrPriceA([]);
     setCurrPriceB([]);
